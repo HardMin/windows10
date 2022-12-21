@@ -9,7 +9,7 @@ interface Props {
 const Container = ({children, display = 'flex', className}:Props) => {
 
   return (
-    <div style={{display: display}} className={className && className}>
+    <div className={`${ className && className} ${display}`}>
       {children}
     </div>
   )

@@ -5,14 +5,17 @@ interface Props{
   children: ReactNode,
   display?: DisplayProps['display']
   className?: string
+  type?: 'title' | 'subtitle' | 'normal'
 }
 
-const Text = ({children, display = 'flex', className}: Props) => {
+const Text = ({children, display = 'flex', className = '', type = 'normal'}: Props) => {
+
   return (
-    <span style={{display: display}} className={className && className}>
+    <span className={className} >
       {children}
     </span>
   )
 }
+
 
 export default Text
