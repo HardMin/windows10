@@ -3,6 +3,7 @@ import Container from "../../components/Container";
 import { Avatar, IconButton, Input, CircularProgress } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import { Image } from "../../components/Image";
+import { useNavigate } from 'react-router-dom'
 
 interface AppStateProps {
   userLogin: {
@@ -23,31 +24,8 @@ export default function LoginScreen() {
     authentication: false,
   });
 
-  const handlePassword = (e: any) => {
-    console.log(userLogin.authentication);
-    setUserLogin((prev) => ({ ...prev, password: e.target.value, error: false }));
-  };
+  const navigate = useNavigate()
 
-
-  const checkPassword = () => {
-    setUserLogin((prev) => ({ ...prev, progress: true }))
-    console.log('Checkeando password');
-
-    if (userLogin.password === '123') {
-      console.log('Autenticacion exitosa');
-      setUserLogin((prev) => ({
-        ...prev,
-        authentication: true,
-        progress: false,
-        error: false
-      }))
-    }
-    else{
-      console.log('Autenticacion fallida');
-      ErrorPassword()
-    }
-
-  };
 
   const ErrorPassword = () => {
     console.log('Hay error en el password');
@@ -58,9 +36,30 @@ export default function LoginScreen() {
     }));
   };
 
-  const handleSubmitUser = () => {
-    userLogin.password.length >= 2 ? checkPassword() : ErrorPassword();
-  };
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    const password = e.target[0].value
+
+    setUserLogin((prev) => ({ ...prev, progress: true }))
+    console.log('Checkeando password');
+    
+    if(password !== '123' || password.lenght > 1){
+      console.log('Autenticacion fallida');
+      ErrorPassword()
+      return
+    }
+
+    setTimeout(()=>{
+      console.log('Autenticacion exitosa');
+      setUserLogin((prev) => ({
+        ...prev,
+        authentication: true,
+        progress: false,
+        error: false
+      }))
+      navigate('/home')
+    }, 1500)
+  }
 
   return (
     <Container className={`loginScreen ${userLogin.authentication ? 'display_none' : ''}`}>
@@ -70,16 +69,15 @@ export default function LoginScreen() {
         {userLogin.progress ? (
           <CircularProgress style={{ marginTop: 40 }} />
         ) : (
-          <form>
+          <form onSubmit={handleSubmit}>
             <h2>Diego Aldana</h2>
             <Input
               type="password"
               placeholder="Escriba la contrasenia"
-              onChange={handlePassword}
               error={userLogin.error}
               required
             />
-            <IconButton color="primary" onClick={handleSubmitUser}>
+            <IconButton type='submit' color="primary">
               <ArrowForward />
             </IconButton>
           </form>

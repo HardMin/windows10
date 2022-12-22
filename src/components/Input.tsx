@@ -6,7 +6,7 @@ interface Props {
   className?: string
 }
 
-const Input = ({ value, required, type = "text", placeholder, className }: Props) => {
+const Input = ({ value, required, type = "text", placeholder, className='' }: Props) => {
 
 
   return (
@@ -20,14 +20,15 @@ const Input = ({ value, required, type = "text", placeholder, className }: Props
             placeholder={placeholder}
             required={required}
           />
-          <span className="input-border-bottom-right"></span>
-          <span className="input-border-bottom-left"></span>
+          <span className="input-border-bottom-right">Not found</span>
+          <span className="input-border-bottom-left">Not found</span>
         </>
       ) : (
         <input
           type={type}
           value={value}
           placeholder={placeholder}
+          className={className}
         />
       )}
     </>

@@ -1,0 +1,145 @@
+@import url('./root.css');
+
+
+.container_home {
+  width: 100vw;
+  height: 100vh;
+}
+
+.wallpapers_home {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.container_desktop{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.desktop_files {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding: 1em 1.4em;
+}
+.desktop_folder_files{
+  flex-direction: column;
+  width: 50px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.desktop_folder_files_icon{
+  font-size: 3em !important;
+  margin-bottom: -.3em;
+}
+
+/* ==========TASKBAR=========== */
+
+.taskbar{
+  position: relative;
+  width: 100%;
+  height: var(--taskbar-height);
+  background: var(--bg-dark);
+}
+
+.taskbar_menu_search{
+  align-items: center;
+}
+
+.taskbar_menu{
+  padding: .64em .9em;
+  height: 20px;
+  width: 22px;
+  filter: contrast(20%) brightness(150%);
+}
+.taskbar_menu:hover{
+  background: #eee;
+  filter: contrast(80%) brightness(110%);
+}
+
+.taskbar_search{
+  background: var(--bg-gray);
+  align-items: center;
+  width: 16.8em;
+  height: 100%;
+}
+
+.taskbar_search_icon{
+  transform: scaleX(-1);  
+  padding: 0 .3em;
+}
+.taskbar_search_input{
+  background: transparent;
+  color: var(--color-white);
+}
+.taskbar_search_input:focus::placeholder{
+  color: var(--color-white);
+}
+/* ==========TASKBAR=========== */
+
+/* ========MENUWINDOWS========= */
+.menu_windows{
+  position: absolute;
+  bottom: var(--taskbar-height);
+  margin-bottom: 1px;
+  height: 30em;
+  width: 20em;
+  background: red;
+}
+.menu_windows_section_1{
+  width: 60px;
+  height: 100%;
+  background: var(--bg-dark);
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu_windows_section_1 .section_1{
+  width: 100%;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+}
+.menu_windows_section_1 .icon{
+  width: 100%;
+  height: 24px;
+  padding: .4em 0em;
+}
+.menu_windows_section_1 .section_1 .icon:hover{
+  background: var(--bg-gray-2);
+}
+.menu_windows_section_1 .section_2{
+  width: 100%;
+  height: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  padding: .5em 0;
+}
+.menu_windows_section_1 .section_2 .icon:hover{
+  background: var(--bg-gray-2);
+}
+.menu_windows_section_1 .section_2 .user{
+  width: 90%;
+  height: 30px;
+  margin-bottom: 2em;
+}
+
+.menu_windows_section_1 .draw{
+  position: absolute;
+  /* width: 100%; */
+  /* height: 50%; */
+  /* background: green; */
+}
+
+.menu_windows_section_2{
+  width: 100%;
+  height: 100%;
+  background: green;
+}
+
+/* ========MENUWINDOWS========= */

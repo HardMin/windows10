@@ -1,19 +1,27 @@
-import { ReactNode, StrictMode } from 'react'
+import { MouseEventHandler, ReactNode, StrictMode } from 'react'
 import { image, icon } from '../assets/indexAssests'
 
 
 interface Props {
-  src?: string
-  resize?: 'contain' | 'cover' | 'center'
-  max?: boolean
   name?: string
-  children?: ReactNode
   className?: string
-  user?: boolean
   style?: object
+  type?: 'wallpapers' | 'normal'
+
+  width?: string
+  height?: string
+
+  onClick?: MouseEventHandler
 }
 
-export const Image = ({resize, src, max, name, children, className}:Props) => {
+export const Image = (
+  {
+    name, 
+    className = '', 
+    type = 'normal',
+  }:Props) => {
+
+  
 
   const nameImage: {url: string, alt: string} | boolean = [
     name === 'windows10_1' && image.windows10_1,
@@ -26,58 +34,44 @@ export const Image = ({resize, src, max, name, children, className}:Props) => {
   return(
     <StrictMode>
       {
-        nameImage && <img src={nameImage.url} alt={nameImage.alt} className={className && className}/>
+        type 
+          ? (
+            type === 'wallpapers' 
+              ? nameImage && 
+                <img src={nameImage.url} 
+                     alt={nameImage.alt} 
+                     className={className}
+                     width='100%'
+                     height='100%'
+                     />
+            
+              : type === 'normal' && nameImage && <img src={nameImage.url} alt={nameImage.alt} className={className}/>
+
+          )
+         : nameImage && <img src={nameImage.url} alt={nameImage.alt} className={className}/>
       }
     </StrictMode>
   )
 }
 
-export const ImageCss = ({resize, src, name, className, style}:Props) => {
+export const Icon = ({
+    name, 
+    className = '', 
+    onClick
+  }:Props) => {
 
-  const nameImage: {url: string, alt: string} | boolean = [
-    name === 'windows10_1' && image.windows10_1,
-    name === 'windows10_2' && image.windows10_2,
-    name === 'windows10_3' && image.windows10_3,
-  ].filter(e => e)[0]
-
-  
-
-  return(
-    <StrictMode>
-      {
-        nameImage && <div className={className} style={style}></div>
-      }
-    </StrictMode>
-  )
-}
-
-
-export const Icon = ({resize, src, max, name, className}:Props) =>{
-  
   const nameIcon: {url: string, alt: string} | boolean = [
-    name === 'user_1' && image.user_login_1,
-  ].filter(e => e)[0]
-  return(
-    <StrictMode>
-      {
-        nameIcon && <img src={nameIcon.url} alt={nameIcon.alt}/>
-      }
-    </StrictMode>
-  )
-}
-export const Avatar = ({resize, src, max, name, className}:Props) =>{
-
-  const nameImage: {url: string, alt: string} | boolean = [
-    name === 'user_1' && image.user_login_1,
+    name === 'windows10' && icon.window10,
   ].filter(e => e)[0]
 
-
-  return(
-    <StrictMode>
+  return (
+    <>
       {
-
-        nameImage && ( <img className={className} src={nameImage?.url} alt={nameImage?.alt}/> )
+        nameIcon && <img src={nameIcon.url} alt={nameIcon.alt} className={className} onClick={onClick}/>
       }
-    </StrictMode>
+    </>
+    
   )
 }
+
+

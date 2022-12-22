@@ -1,0 +1,14 @@
+:root{
+  --primary: rgba(42, 90, 224, 0.867);
+  --bg-gray: rgb(57, 60, 61);
+  --bg-gray-2: rgb(70, 70, 70);
+  --bg-dark: rgb(26, 28, 29);
+  --color-blue: rgb(0, 238, 255);
+  --color-white: #eee;
+  --placeholder: #686868;
+
+
+
+  --taskbar-height: 40px;
+
+}

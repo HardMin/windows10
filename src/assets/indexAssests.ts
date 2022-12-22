@@ -22,6 +22,11 @@ export const icon = {
   arrow: {
     url: require('./icon/arrow.png'),
     alt: 'arrow'
-  }
+  },
+  window10: {
+    url: require('./icon/windows-10-120.png'),
+    alt: 'window10'
+  },
+
 }
 
