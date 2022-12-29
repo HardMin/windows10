@@ -6,12 +6,13 @@ interface Props{
   display?: DisplayProps['display']
   className?: string
   type?: 'title' | 'subtitle' | 'normal'
+  style?: object
 }
 
-const Text = ({children, display = 'flex', className = '', type = 'normal'}: Props) => {
+const Text = ({children, style, display = 'flex', className = '', type = 'normal'}: Props) => {
 
   return (
-    <span className={className} >
+    <span className={className} style={style}>
       {children}
     </span>
   )

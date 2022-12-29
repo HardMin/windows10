@@ -54,24 +54,4 @@ export const Image = (
   )
 }
 
-export const Icon = ({
-    name, 
-    className = '', 
-    onClick
-  }:Props) => {
-
-  const nameIcon: {url: string, alt: string} | boolean = [
-    name === 'windows10' && icon.window10,
-  ].filter(e => e)[0]
-
-  return (
-    <>
-      {
-        nameIcon && <img src={nameIcon.url} alt={nameIcon.alt} className={className} onClick={onClick}/>
-      }
-    </>
-    
-  )
-}
-
 

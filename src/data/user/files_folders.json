@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Papelera",
+    "type": "folder_delete",
+    "subfiles": [] 
+  },
+  {
+    "name": "Documentos",
+    "type": "folder",
+    "subfiles": []
+  },
+  {
+    "name": "Imagenes",
+    "type": "folder",
+    "subfiles": []
+  },
+  {
+    "name": "Videos",
+    "type": "folder",
+    "subfiles": []
+  }
+  
+]

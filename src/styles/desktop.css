@@ -1,5 +1,4 @@
-@import url('./root.css');
-
+@import url("./root.css");
 
 .container_home {
   width: 100vw;
@@ -11,7 +10,7 @@
   top: 0;
   left: 0;
 }
-.container_desktop{
+.container_desktop {
   position: relative;
   width: 100%;
   height: 100%;
@@ -25,7 +24,7 @@
   flex-direction: column;
   padding: 1em 1.4em;
 }
-.desktop_folder_files{
+.desktop_folder_files {
   flex-direction: column;
   width: 50px;
   height: 100px;
@@ -33,113 +32,223 @@
   align-items: center;
 }
 
-.desktop_folder_files_icon{
+.desktop_folder_files_icon {
   font-size: 3em !important;
-  margin-bottom: -.3em;
+  margin-bottom: -0.3em;
+  color: #878787;
 }
 
 /* ==========TASKBAR=========== */
 
-.taskbar{
+.taskbar {
   position: relative;
   width: 100%;
   height: var(--taskbar-height);
   background: var(--bg-dark);
+  user-select: none;
 }
 
-.taskbar_menu_search{
+.taskbar_menu_search {
   align-items: center;
 }
 
-.taskbar_menu{
-  padding: .64em .9em;
+.taskbar_menu {
+  padding: 0.64em 0.9em;
   height: 20px;
   width: 22px;
-  filter: contrast(20%) brightness(150%);
+  filter: contrast(6%) brightness(200%);
 }
-.taskbar_menu:hover{
-  background: #eee;
-  filter: contrast(80%) brightness(110%);
+.taskbar_menu:hover {
+  background: #aaa1;
+  filter: contrast(80%) brightness(100%);
 }
 
-.taskbar_search{
+.taskbar_search {
   background: var(--bg-gray);
   align-items: center;
   width: 16.8em;
   height: 100%;
 }
 
-.taskbar_search_icon{
-  transform: scaleX(-1);  
-  padding: 0 .3em;
+.taskbar_search_icon {
+  transform: scaleX(-1);
+  padding: 0 0.3em;
 }
-.taskbar_search_input{
+.taskbar_search_input {
   background: transparent;
   color: var(--color-white);
 }
-.taskbar_search_input:focus::placeholder{
+.taskbar_search_input:focus::placeholder {
   color: var(--color-white);
 }
+.taskbar_application {
+  width: 100%;
+  height: 100%;
+}
+.taskbar_accessibility {
+  height: 100%;
+}
+.taskbar_accessibility_icons_container {
+  height: 100%;
+  align-items: center;
+}
+.taskbar_accessibility_icons_container .icon {
+  font-size: 16px !important;
+  padding: 0 0.4em;
+  height: 100%;
+}
+.taskbar_accessibility_icons_container .icon:hover {
+  background: var(--bg-gray);
+}
+.taskbar_accessibility_icons_container .icon_lang {
+  display: flex;
+  font-size: 12px !important;
+  align-items: center;
+}
+.taskbar_accessibility_icons_container .icon_keyboard {
+  font-size: 19px !important;
+}
+
+.taskbar_accessibility_date_container {
+  width: 5em;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.taskbar_accessibility_date_container:hover {
+  background: var(--bg-gray);
+}
+.taskbar_accessibility_hour {
+  text-align: center;
+  font-size: 14px;
+}
+.taskbar_accessibility_date {
+  text-align: center;
+  font-size: 14px;
+}
+
 /* ==========TASKBAR=========== */
 
 /* ========MENUWINDOWS========= */
-.menu_windows{
+
+.menu_windows {
   position: absolute;
   bottom: var(--taskbar-height);
   margin-bottom: 1px;
   height: 30em;
   width: 20em;
-  background: red;
+  overflow: hidden;
 }
-.menu_windows_section_1{
-  width: 60px;
+
+.menu_windows_section_1 {
+  width: var(--MenuWindow-draw-width);
   height: 100%;
-  background: var(--bg-dark);
+  background: var(--bg-gray);
   flex-direction: column;
   justify-content: space-between;
+  position: absolute;
+  overflow: hidden;
+  transition: width 600ms;
 }
-.menu_windows_section_1 .section_1{
-  width: 100%;
+
+.menu_windows_section_1 .section_1 {
+  width: var(--MenuWindow-draw-width);
   height: 10%;
   justify-content: center;
   align-items: center;
 }
-.menu_windows_section_1 .icon{
-  width: 100%;
+
+.menu_windows_section_1 .icon {
+  width: var(--MenuWindow-draw-width);
   height: 24px;
-  padding: .4em 0em;
+  padding: 0.4em 0em;
+  position: relative;
 }
-.menu_windows_section_1 .section_1 .icon:hover{
-  background: var(--bg-gray-2);
+
+.menu_windows_section_1 .user {
+  margin: 20px 10px;
+  height: 20px;
+  width: calc(var(--MenuWindow-draw-width) - 20px);
 }
-.menu_windows_section_1 .section_2{
+
+.menu_windows_section_1 .section_2 {
   width: 100%;
   height: 50%;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: end;
-  padding: .5em 0;
-}
-.menu_windows_section_1 .section_2 .icon:hover{
-  background: var(--bg-gray-2);
-}
-.menu_windows_section_1 .section_2 .user{
-  width: 90%;
-  height: 30px;
-  margin-bottom: 2em;
+  padding: 0.5em 0;
 }
 
-.menu_windows_section_1 .draw{
+.menu_windows_section_1 .container_icon {
+  width: 100%;
+  height: 3em;
+  align-items: center;
+  position: relative;
+}
+
+.menu_windows_section_1 .container_icon .handle {
+  width: 15em;
+  height: 100%;
   position: absolute;
-  /* width: 100%; */
-  /* height: 50%; */
-  /* background: green; */
 }
 
-.menu_windows_section_2{
+.menu_windows_section_1 .container_icon .text_icon {
+  width: 100%;
+  min-width: 6em;
+  margin-left: 5px;
+  position: relative;
+}
+
+.menu_windows_section_1:hover {
+  width: 15em;
+  transition: all 600ms;
+}
+.menu_windows_section_1 .container_icon_menu .handle:hover,
+.menu_windows_section_1 .container_icon_user .handle:hover,
+.menu_windows_section_1 .container_icon_settings .handle:hover,
+.menu_windows_section_1 .container_icon_power .handle:hover
+ {
+  background: #fff1;
+}
+
+.container_menu_power{
+  background: red;
+  width: 100%;
+  bottom: 3.5em;
+  position: absolute;
+  flex-direction: column;
+}
+.container_menu_power .container_icon_text{
+  height: 2em;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu_windows_section_2 {
   width: 100%;
   height: 100%;
-  background: green;
+  margin-left: var(--MenuWindow-draw-width);
+  background: var(--bg-dark);
+  flex-direction: column;
+}
+
+.menu_windows_section2_container {
+  width: 100%;
+  flex-wrap: nowrap;
+  align-items: center;
+  user-select: none;
+}
+
+.menu_windows_section2_container:hover {
+  background: var(--bg-gray);
+}
+
+.menu_windows_section2_container_icon {
+  margin: 0 10px;
 }
 
 /* ========MENUWINDOWS========= */
+
+
