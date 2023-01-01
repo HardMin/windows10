@@ -1,3 +1,4 @@
+import {icon} from './icon/indexIcon'
 
 export const image = {
   windows10_1: {
@@ -18,15 +19,7 @@ export const image = {
   }
 }
 
-export const icon = {
-  arrow: {
-    url: require('./icon/arrow.png'),
-    alt: 'arrow'
-  },
-  window10: {
-    url: require('./icon/windows-10-120.png'),
-    alt: 'window10'
-  },
-
+export {
+  icon
 }
 

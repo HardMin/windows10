@@ -1,6 +1,5 @@
 import { icon } from "../assets/indexAssests";
-import { MouseEventHandler, FocusEventHandler, useState } from "react";
-import Container from "./Container";
+import { MouseEventHandler, FocusEventHandler } from "react";
 import { PowerSettingsNew as Power, Settings, Menu } from "@mui/icons-material";
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 
   width?: string;
   height?: string;
-  img?: boolean;
+  img?: boolean | any;
   onClick?: MouseEventHandler;
   onFocus?: FocusEventHandler;
   onMouseOver?: MouseEventHandler;
@@ -24,8 +23,6 @@ const Icon = ({
   onClick,
   onFocus,
   onMouseOver,
-  width = "100%",
-  height = "inheret",
 }: Props) => {
 
   const nameIcon: { url: string; alt: string } | boolean = [
@@ -61,5 +58,23 @@ const Icon = ({
     </>
   );
 };
+
+export const IconDesk = ({
+  name,
+  className = "",
+  img = false,
+  onClick,
+  onFocus,
+  onMouseOver,
+}:Props)=>{
+
+  return img 
+    ? (
+      <>Image</>
+    ) 
+    : (
+      <>IconMaterial</>
+    )
+}
 
 export default Icon;

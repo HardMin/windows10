@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import Container from '../../../components/Container'
 import { Folder, InsertDriveFile as Files, Delete } from '@mui/icons-material'
+import IconDesktop from '../components/IconDesktop'
 
 const source = [
   {
@@ -39,8 +40,8 @@ export const DesktopFiles = ({menu, toggleMenu}:Props) => {
       <Container className='desktop_folder_files'>
         {
           use === 'delete' 
-            ? <Delete className='desktop_folder_files_icon'/> 
-            : <Folder className='desktop_folder_files_icon'/>
+            ? <IconDesktop className='desktop_folder_files_icon' name='trash' img={true}/> 
+            : <IconDesktop className='desktop_folder_files_icon' name='folder' img={true}/>
         }
         
         <h4>{name}</h4>
