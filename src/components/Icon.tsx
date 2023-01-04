@@ -1,6 +1,5 @@
 import { icon } from "../assets/indexAssests";
 import { MouseEventHandler, FocusEventHandler } from "react";
-import { PowerSettingsNew as Power, Settings, Menu } from "@mui/icons-material";
 
 interface Props {
   name?: string;
@@ -19,62 +18,22 @@ interface Props {
 const Icon = ({
   name,
   className = "",
-  img = false,
+  img,
   onClick,
   onFocus,
   onMouseOver,
 }: Props) => {
+  const nameIcon = icon.filter((ico) => ico.name === name)[0];
 
-  const nameIcon: { url: string; alt: string } | boolean = [
-    name === "windows10" && icon.window10,
-  ].filter((e) => e)[0];
-
-  const IconsMaterial = () => (
-    <>
-      {[
-        name === "Power" && <Power className={className} />,
-        name === "Settings" && <Settings className={className}/>,
-        name === "Menu" && <Menu className={className}/>
-        ]}
-    </>
-  );
-
-  return (
-    <>
-      {img ? (
-        <>
-          {nameIcon && (
-            <img
+  return nameIcon 
+          ? <img
               src={nameIcon.url}
-              alt={nameIcon.alt}
+              alt={nameIcon.name}
               className={className}
               onClick={onClick}
             />
-          )}
-        </>
-      ) : (
-        <IconsMaterial />
-      )}
-    </>
-  );
+          : <>No image</>
 };
 
-export const IconDesk = ({
-  name,
-  className = "",
-  img = false,
-  onClick,
-  onFocus,
-  onMouseOver,
-}:Props)=>{
-
-  return img 
-    ? (
-      <>Image</>
-    ) 
-    : (
-      <>IconMaterial</>
-    )
-}
 
 export default Icon;

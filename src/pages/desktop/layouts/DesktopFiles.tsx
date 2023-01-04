@@ -1,60 +1,103 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, useState, useId } from 'react'
 import Container from '../../../components/Container'
-import { Folder, InsertDriveFile as Files, Delete } from '@mui/icons-material'
 import IconDesktop from '../components/IconDesktop'
 
-const source = [
-  {
-    type: 'folder',
-    name: 'Papelera',
-    use: 'delete'
-
-  },
-  {
-    type: 'folder',
-    name: 'Escritorio',
-  },
-]
-
+interface AppState {
+  filesDesktop: {id:string, text: string, type:string, active: boolean,
+    hover: boolean}[]
+}
 interface Props {
   menu: boolean 
   toggleMenu: Dispatch<SetStateAction<boolean>>
 
 }
 export const DesktopFiles = ({menu, toggleMenu}:Props) => {
+  const [filesDesktop, setFilesDesktop] = useState<AppState['filesDesktop']>([
+    {
+      id: `iconDesktop${useId()}`,
+      type: 'trash',
+      text: 'Papelera',
+      active: false,
+      hover: false
+    },
+    {
+      id: `iconDesktop${useId()}`,
+      type: 'trash',
+      text: 'Papelera',
+      active: false,
+      hover: false
+    },
+  ])
+  const [fileIsActive, setFileIsActive] = useState({
+    bool: false,
+    id: 0
+  })
 
-  const handleToggleMenu = ()=>{
-    menu && toggleMenu(false)
-  } 
-
-  const DesktopFiles = ({name}:{name:string})=>{
-    return(
-      <Container className='desktop_folder_files'> 
-        <Files className='desktop_folder_files_icon'/>
-        <h4>{name}</h4>
-      </Container>
-    )
+  const handleFileIsHover = (hover:boolean, id:string)=>{
+    const files = [...filesDesktop]
+    const file = files.find(e => e.id === id)
+    hover 
+      ? file !== undefined && (file.hover = true)
+      : file !== undefined && (file.hover = false)
+    setFilesDesktop(files)
   }
-  const DesktopFolder = ({name, use=''}:{name:string, use?: string}) => {
-    return(
-      <Container className='desktop_folder_files'>
-        {
-          use === 'delete' 
-            ? <IconDesktop className='desktop_folder_files_icon' name='trash' img={true}/> 
-            : <IconDesktop className='desktop_folder_files_icon' name='folder' img={true}/>
-        }
-        
-        <h4>{name}</h4>
-      </Container>
-    )
 
+  const resetIconActive = ()=>{
+    const files = [...filesDesktop]
+    // reset active
+    files.forEach(()=>{
+      const fileActive = files.find(e=>e.active)
+      fileActive !== undefined && (fileActive.active = false)
+    })
+    setFilesDesktop(files)
+  }
+  const handleFileNotActive = ()=>{
+    setFileIsActive((prev)=>({...prev, bool: false}))
+    resetIconActive()
+  };
+
+  const handleFileIsActive = (id:string)=>{
+    const files = [...filesDesktop]
+    resetIconActive()
+    const fileActiveId = files.findIndex(e=>e.id === id)
+    const fileActive = files.find(e => e.id === id)
+
+    if(fileActive !== undefined){
+      fileActiveId !== fileIsActive.id 
+        ? fileActive.active = true
+        : fileActive.active = !fileIsActive.bool
+        
+      setFileIsActive((prev)=>({...prev, id:fileActiveId}))
+      
+      /*
+        Si es el mismo elemento, si es otro archivo o carpeta
+        no quitar la subpantalla. si es el mismo quitar la subpantalla
+      */ 
+      fileIsActive.bool && (fileIsActive.id === fileActiveId) 
+        ? setFileIsActive((prev)=>({...prev, bool: false}))
+        : setFileIsActive((prev)=>({...prev, bool: true}))
+    }
+      
+    setFilesDesktop(files)
   }
 
   return (
-    <Container className='desktop_files' onClick={handleToggleMenu}>
-      {
-        source.map(e => e.type === 'folder' ? <DesktopFolder name={e.name} use={e?.use}/> : <DesktopFiles name={e.name}/>)
-      }
+    <Container className='container_desktop_files'>
+        <IconDesktop 
+          filesDesktop={filesDesktop}
+          classNameContainer={`desktop_files ${fileIsActive ? 'z-index-1100' : ''}`}
+          className='icon'
+          isHover={handleFileIsHover}
+          isActive={handleFileIsActive}
+          />
+        {
+          fileIsActive.bool && (
+            <Container 
+              className='handleIconDesktopActive'
+              onClick={handleFileNotActive}
+              />
+          )
+        }
     </Container>
   )
 }

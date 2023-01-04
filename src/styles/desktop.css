@@ -17,27 +17,41 @@
   flex-direction: column;
 }
 
-.desktop_files {
+.container_desktop_files {
   position: relative;
   width: 100%;
   height: 100%;
   flex-direction: column;
-  padding: 1em 1.4em;
 }
-.desktop_folder_files {
+.desktop_files {
   flex-direction: column;
-  width: 50px;
+  max-width: 70px;
   height: 100px;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
 }
-
-.desktop_folder_files_icon {
-  font-size: 3em !important;
-  margin-bottom: -0.3em;
-  color: #878787;
+.desktop_files .icon {
+  width: 50px;
+  margin-bottom: 10px;
 }
-
+.iconDesktopHover{
+  background: #aaa3;
+}
+.iconDesktopActive{
+  background: #aaa6;
+}
+.handleIconDesktopActive{
+  /* background: blue; */
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+}
 /* ==========TASKBAR=========== */
 
 .taskbar {

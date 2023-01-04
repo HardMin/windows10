@@ -1,9 +1,8 @@
 import { useState } from "react";
 import Container from "../../../components/Container";
 import { Avatar } from "@mui/material";
-import { Folder, InsertDriveFile as Files } from "@mui/icons-material";
+import { Folder, InsertDriveFile as Files, PowerSettingsNew as Power, Settings, Menu } from "@mui/icons-material";
 import menu_windows from "../../../data/user/menu_windows";
-import Icon from "../../../components/Icon";
 import Text from "../../../components/Text";
 import { useNavigate } from 'react-router-dom'
 
@@ -54,7 +53,7 @@ const MenuWindows = ({ open }: Props) => {
           >
           <Container className="section_1">
             <Container className='container_icon container_icon_menu'>
-              <Icon name="Menu" className="menu icon" />
+              <Menu className="menu icon" />
               <Text className="text_icon">INICIO</Text>
               <Container className="handle"/>
             </Container>
@@ -66,7 +65,7 @@ const MenuWindows = ({ open }: Props) => {
               <Container className="handle"/>
             </Container>
             <Container className="container_icon container_icon_settings">
-              <Icon name="Settings" className="icon settings" />
+              <Settings className="icon settings" />
               <Text className="text_icon">Configuracion</Text>
               <Container className="handle"/>
             </Container>
@@ -88,11 +87,10 @@ const MenuWindows = ({ open }: Props) => {
               <Container className="container_icon_text">
                 <Text className="text_icon">Reiniciar</Text>
               </Container>
-
             </Container>
 
             <Container className="container_icon container_icon_power">
-              <Icon name="Power" className="icon power" />
+              <Power className="icon power" />
               <Text className="text_icon">Incio/apagado</Text>
               <Container 
                 className="handle" 

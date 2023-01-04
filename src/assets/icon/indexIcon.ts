@@ -1,20 +1,27 @@
 
-export const icon = {
-  arrow: {
+export const icon = [
+  {
     url: require('./arrow.png'),
-    alt: 'arrow'
+    name: 'arrow'
   },
-  window10: {
+  {
     url: require('./windows-10-120.png'),
-    alt: 'window10'
+    name: 'windows10'
   },
-  trash_empty : {
+  {
     url: require('./1/1/64x64/Windows 11/Windows 11 Icon 06.ico'),
-    alt: 'trash' 
+    name: 'trash' 
   },
-  trash_full : {
+  {
     url: require('./1/1/64x64/Windows 11/Windows 11 Icon 07.ico'),
-    alt: 'trash' 
+    name: 'trash_full' 
   },
-}
-
+  {
+    url: require('./1/1/64x64/Windows 11/Windows 11 Icon 19.ico'),
+    name: 'folder' 
+  },
+  {
+    url: '',
+    name: 'undefined'
+  }
+]

@@ -49,6 +49,15 @@ h1, h2, h3, h4 {
 .none{
   display: none;
 }
+.z-index-1000{
+  position: relative;
+  z-index: 1000;
+}
+.z-index-1100{
+  position: relative;
+  z-index: 1100;
+}
+
 
 .container_handle{
   width: 100%;
